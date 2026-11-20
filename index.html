@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html lang="vi" class="text-[16px] sm:text-[18px]">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compass English • The Present Simple Tense - Thì Hiện Tại Đơn</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Plus Jakarta Sans, Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        compass: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            200: '#c7d2fe',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            900: '#1e1b4b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        @keyframes popIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-pop { animation: popIn 0.25s ease-out forwards; }
+
+        /* Smooth hover elevation for cards */
+        .lesson-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+        .lesson-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 28px -8px rgba(79, 70, 229, 0.12);
+        }
+
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased leading-relaxed selection:bg-compass-600 selection:text-white">
+
+    <!-- ==================== 1. STICKY HEADER & QUICK JUMP BAR ==================== -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-2xs">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="flex flex-wrap items-center justify-between gap-3 py-3">
+                <!-- Brand Badge -->
+                <button type="button" onclick="scrollToId('hero-top')" class="flex items-center gap-3 text-left cursor-pointer group">
+                    <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-compass-600 to-indigo-800 flex items-center justify-center text-white shadow-md shadow-compass-600/20 group-hover:scale-105 transition-transform shrink-0">
+                        <svg class="w-7 h-7" viewBox="0 0 36 36" fill="none">
+                            <circle cx="18" cy="18" r="13" stroke="white" stroke-width="2" stroke-opacity="0.35"/>
+                            <path d="M18 3V6M18 30V33M3 18H6M30 18H33" stroke="#FBBF24" stroke-width="2.2" stroke-linecap="round"/>
+                            <polygon points="18,9 21.5,18 18,27 14.5,18" fill="white"/>
+                            <polygon points="18,9 21.5,18 14.5,18" fill="#FBBF24"/>
+                            <circle cx="18" cy="18" r="2" fill="#1E1B4B"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="font-heading font-extrabold text-lg text-slate-900 leading-tight">
+                            Compass <span class="text-compass-600">English</span>
+                        </div>
+                        <div class="text-xs font-bold text-sky-600">Grammar Lesson #01</div>
+                    </div>
+                </button>
+
+                <!-- Voice Accent Switcher (US / UK) -->
+                <div class="flex items-center gap-2">
+                    <div class="inline-flex rounded-xl bg-slate-100 p-1 border border-slate-200" role="group" aria-label="Chọn giọng đọc">
+                        <button type="button" id="accent-us" onclick="setAccent('en-US')"
+                            class="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-bold bg-compass-600 text-white shadow-2xs transition-all cursor-pointer">
+                            US 🇺🇸
+                        </button>
+                        <button type="button" id="accent-gb" onclick="setAccent('en-GB')"
+                            class="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-bold text-slate-600 hover:text-slate-900 transition-all cursor-pointer">
+                            UK 🇬🇧
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Jump Navigation Pills (Iframe-safe button scrolling) -->
+            <nav class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-3 pt-1 border-t border-slate-100">
+                <button type="button" onclick="scrollToId('sec-uses')"
+                    class="px-3.5 py-2 rounded-xl bg-indigo-50 hover:bg-compass-600 text-compass-700 hover:text-white text-xs sm:text-sm font-bold whitespace-nowrap transition-colors cursor-pointer">
+                    I. Cách dùng
+                </button>
+                <button type="button" onclick="scrollToId('sec-structure')"
+                    class="px-3.5 py-2 rounded-xl bg-sky-50 hover:bg-sky-600 text-sky-700 hover:text-white text-xs sm:text-sm font-bold whitespace-nowrap transition-colors cursor-pointer">
+                    II. Cấu trúc
+                </button>
+                <button type="button" onclick="scrollToId('sec-spelling')"
+                    class="px-3.5 py-2 rounded-xl bg-amber-50 hover:bg-amber-500 text-amber-800 hover:text-slate-950 text-xs sm:text-sm font-bold whitespace-nowrap transition-colors cursor-pointer">
+                    III. Thêm S / ES
+                </button>
+                <button type="button" onclick="scrollToId('sec-signals')"
+                    class="px-3.5 py-2 rounded-xl bg-emerald-50 hover:bg-emerald-600 text-emerald-700 hover:text-white text-xs sm:text-sm font-bold whitespace-nowrap transition-colors cursor-pointer">
+                    IV. Dấu hiệu nhận biết
+                </button>
+                <button type="button" onclick="scrollToId('sec-practice')"
+                    class="px-3.5 py-2 rounded-xl bg-rose-50 hover:bg-rose-600 text-rose-700 hover:text-white text-xs sm:text-sm font-bold whitespace-nowrap transition-colors cursor-pointer">
+                    ★ Bài tập áp dụng (10 câu)
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ==================== 2. HERO BANNER & VISUAL TIMELINE ==================== -->
+    <section id="hero-top" class="bg-gradient-to-b from-compass-50/90 via-white to-slate-50 pt-8 pb-12 sm:pt-12 sm:pb-16 border-b border-slate-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-xl shadow-slate-200/70 border border-slate-200/90">
+                <div class="flex flex-wrap items-center gap-2.5 mb-4">
+                    <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-compass-600 text-white text-xs sm:text-sm font-extrabold">
+                        <i data-lucide="sparkles" class="w-4 h-4 text-amber-300"></i>
+                        Compass English • Grammar Lesson 01
+                    </span>
+                    <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-emerald-100 text-emerald-800 text-xs sm:text-sm font-bold">
+                        Trình độ nền tảng • Cốt lõi #1
+                    </span>
+                </div>
+
+                <h1 class="font-heading text-2xl sm:text-4xl lg:text-[42px] font-extrabold text-slate-900 tracking-tight leading-tight mb-3">
+                    THE PRESENT SIMPLE TENSE
+                    <span class="block text-transparent bg-clip-text bg-gradient-to-r from-compass-600 to-sky-500 mt-1">
+                        THÌ HIỆN TẠI ĐƠN
+                    </span>
+                </h1>
+
+                <p class="text-base sm:text-lg text-slate-600 font-medium max-w-3xl mb-7">
+                    Thì cơ bản và quan trọng nhất trong tiếng Anh, dùng để diễn tả <strong>thói quen lặp lại</strong>, <strong>sự thật hiển nhiên</strong> và <strong>lịch trình cố định</strong> quanh mốc hiện tại.
+                </p>
+
+                <!-- Visual Timeline Box -->
+                <div class="bg-slate-900 rounded-2xl p-4 sm:p-6 text-white">
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                        <span class="text-xs sm:text-sm font-bold uppercase tracking-wider text-sky-300 flex items-center gap-2">
+                            <i data-lucide="activity" class="w-4 h-4 text-amber-400"></i>
+                            Bản đồ trục thời gian Hiện tại đơn
+                        </span>
+                        <span class="font-mono text-xs sm:text-sm font-bold px-3 py-1 rounded-lg bg-amber-400/20 text-amber-300 border border-amber-400/30">
+                            Lặp lại đều đặn • Chân lý
+                        </span>
+                    </div>
+
+                    <svg viewBox="0 0 640 135" class="w-full h-auto max-h-40">
+                        <!-- Main axis -->
+                        <line x1="32" y1="74" x2="600" y2="74" stroke="#475569" stroke-width="4" stroke-linecap="round"/>
+                        <polygon points="598,67 614,74 598,81" fill="#64748B"/>
+
+                        <!-- NOW vertical line -->
+                        <line x1="320" y1="22" x2="320" y2="108" stroke="#818CF8" stroke-width="2.5" stroke-dasharray="5 5"/>
+
+                        <!-- Repeated habit points -->
+                        <circle cx="150" cy="74" r="9" fill="#38BDF8"/>
+                        <circle cx="235" cy="74" r="9" fill="#38BDF8"/>
+                        <circle cx="320" cy="74" r="12" fill="#FBBF24" stroke="#1E1B4B" stroke-width="3"/>
+                        <circle cx="405" cy="74" r="9" fill="#38BDF8"/>
+                        <circle cx="490" cy="74" r="9" fill="#38BDF8"/>
+
+                        <!-- Top arc arrows showing repetition -->
+                        <path d="M158 60 Q 192 40, 226 60" fill="none" stroke="#7DD3FC" stroke-width="2" stroke-dasharray="3 3"/>
+                        <path d="M243 60 Q 280 40, 310 60" fill="none" stroke="#7DD3FC" stroke-width="2" stroke-dasharray="3 3"/>
+                        <path d="M330 60 Q 366 40, 397 60" fill="none" stroke="#7DD3FC" stroke-width="2" stroke-dasharray="3 3"/>
+                        <path d="M413 60 Q 450 40, 482 60" fill="none" stroke="#7DD3FC" stroke-width="2" stroke-dasharray="3 3"/>
+
+                        <!-- Labels -->
+                        <text x="80" y="124" text-anchor="middle" fill="#94A3B8" font-size="13" font-weight="bold">QUÁ KHỨ (Past)</text>
+                        <text x="320" y="124" text-anchor="middle" fill="#FDE047" font-size="13" font-weight="bold">HIỆN TẠI (Now)</text>
+                        <text x="560" y="124" text-anchor="middle" fill="#94A3B8" font-size="13" font-weight="bold">TƯƠNG LAI (Future)</text>
+                        <text x="320" y="20" text-anchor="middle" fill="#E0E7FF" font-size="13" font-weight="bold">Hành động lặp đi lặp lại & Sự thật bền vững</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 3. SECTION I: USES - CÁCH DÙNG ==================== -->
+    <section id="sec-uses" class="py-12 sm:py-16 border-b border-slate-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="mb-8">
+                <span class="inline-block px-3.5 py-1 rounded-full bg-indigo-100 text-compass-700 text-xs sm:text-sm font-extrabold uppercase tracking-wider mb-2">
+                    Phần I • Core Usages
+                </span>
+                <h2 class="font-heading text-2xl sm:text-3xl font-extrabold text-slate-900">
+                    I. USES — CÁCH DÙNG THÌ HIỆN TẠI ĐƠN
+                </h2>
+                <p class="text-base text-slate-600 mt-1">Ghi nhớ nhanh 4 tình huống cốt lõi dưới đây (bấm biểu tượng loa để nghe phát âm chuẩn).</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Use 1 -->
+                <article class="lesson-card bg-white rounded-3xl p-6 sm:p-7 border border-slate-200 shadow-2xs flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between gap-3 mb-4">
+                            <div class="w-12 h-12 rounded-2xl bg-indigo-100 text-compass-600 flex items-center justify-center shrink-0">
+                                <i data-lucide="repeat" class="w-6 h-6"></i>
+                            </div>
+                            <span class="font-mono text-xs sm:text-sm font-extrabold px-3 py-1 rounded-full bg-indigo-50 text-compass-700">
+                                01 • Habits & Routines
+                            </span>
+                        </div>
+                        <h3 class="font-heading text-xl font-extrabold text-slate-900 mb-2">
+                            1. Thói quen, hành động lặp đi lặp lại
+                        </h3>
+                        <p class="text-base text-slate-600 mb-5">
+                            Diễn tả thói quen sinh hoạt hằng ngày hoặc hành động diễn ra đều đặn ở hiện tại.
+                        </p>
+                    </div>
+                    <div class="bg-slate-50 rounded-2xl p-4 border border-slate-200/80 flex items-center justify-between gap-3">
+                        <div>
+                            <p class="font-heading font-bold text-base sm:text-lg text-slate-900">
+                                She <span class="text-compass-600 underline decoration-2">drinks</span> coffee every morning.
+                            </p>
+                            <p class="text-sm text-slate-500 mt-0.5">Cô ấy uống cà phê mỗi buổi sáng.</p>
+                        </div>
+                        <button type="button" onclick="speakText('She drinks coffee every morning.')" title="Nghe ví dụ"
+                            class="w-11 h-11 rounded-xl bg-compass-600 hover:bg-compass-700 text-white flex items-center justify-center shrink-0 shadow-xs cursor-pointer">
+                            <i data-lucide="volume-2" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Use 2 -->
+                <article class="lesson-card bg-white rounded-3xl p-6 sm:p-7 border border-slate-200 shadow-2xs flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between gap-3 mb-4">
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
+                                <i data-lucide="globe" class="w-6 h-6"></i>
+                            </div>
+                            <span class="font-mono text-xs sm:text-sm font-extrabold px-3 py-1 rounded-full bg-emerald-50 text-emerald-700">
+                                02 • General Truths
+                            </span>
+                        </div>
+                        <h3 class="font-heading text-xl font-extrabold text-slate-900 mb-2">
+                            2. Sự thật hiển nhiên, chân lý khoa học
+                        </h3>
+                        <p class="text-base text-slate-600 mb-5">
+                            Những quy luật tự nhiên, chân lý luôn đúng ở mọi thời điểm và không thể chối cãi.
+                        </p>
+                    </div>
+                    <div class="space-y-2.5">
+                        <div class="bg-slate-50 rounded-2xl p-3.5 border border-slate-200/80 flex items-center justify-between gap-3">
+                            <div>
+                                <p class="font-heading font-bold text-base text-slate-900">
+                                    The sun <span class="text-emerald-600 underline decoration-2">rises</span> in the east.
+                                </p>
+                                <p class="text-sm text-slate-500">Mặt trời mọc ở hướng đông.</p>
+                            </div>
+                            <button type="button" onclick="speakText('The sun rises in the east.')" title="Nghe ví dụ"
+                                class="w-10 h-10 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white flex items-center justify-center shrink-0 cursor-pointer">
+                                <i data-lucide="volume-2" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                        <div class="bg-slate-50 rounded-2xl p-3.5 border border-slate-200/80 flex items-center justify-between gap-3">
+                            <div>
+                                <p class="font-heading font-bold text-base text-slate-900">
+                                    Water <span class="text-emerald-600 underline decoration-2">boils</span> at 100°C.
+                                </p>
+                                <p class="text-sm text-slate-500">Nước sôi ở 100 độ C.</p>
+                            </div>
+                            <button type="button" onclick="speakText('Water boils at 100 degrees Celsius.')" title="Nghe ví dụ"
+                                class="w-10 h-10 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white flex items-center justify-center shrink-0 cursor-pointer">
+                                <i data-lucide="volume-2" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Use 3 -->
+                <article class="lesson-card bg-white rounded-3xl p-6 sm:p-7 border border-slate-200 shadow-2xs flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between gap-3 mb-4">
+                            <div class="w-12 h-12 rounded-2xl bg-sky-100 text-sky-600 flex items-center justify-center shrink-0">
+                                <i data-lucide="calendar-clock" class="w-6 h-6"></i>
+                            </div>
+                            <span class="font-mono text-xs sm:text-sm font-extrabold px-3 py-1 rounded-full bg-sky-50 text-sky-700">
+                                03 • Timetables
+                            </span>
+                        </div>
+                        <h3 class="font-heading text-xl font-extrabold text-slate-900 mb-2">
+                            3. Lịch trình cố định, thời gian biểu
+                        </h3>
+                        <p class="text-base text-slate-600 mb-5">
+                            Dùng cho giờ tàu chạy, chuyến bay, lịch học, lịch chiếu phim (dù mang nghĩa tương lai gần).
+                        </p>
+                    </div>
+                    <div class="bg-slate-50 rounded-2xl p-4 border border-slate-200/80 flex items-center justify-between gap-3">
+                        <div>
+                            <p class="font-heading font-bold text-base sm:text-lg text-slate-900">
+                                The train <span class="text-sky-600 underline decoration-2">leaves</span> at 7:30 AM tomorrow.
+                            </p>
+                            <p class="text-sm text-slate-500 mt-0.5">Chuyến tàu khởi hành lúc 7:30 sáng mai.</p>
+                        </div>
+                        <button type="button" onclick="speakText('The train leaves at 7:30 AM tomorrow.')" title="Nghe ví dụ"
+                            class="w-11 h-11 rounded-xl bg-sky-600 hover:bg-sky-700 text-white flex items-center justify-center shrink-0 shadow-xs cursor-pointer">
+                            <i data-lucide="volume-2" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Use 4 -->
+                <article class="lesson-card bg-white rounded-3xl p-6 sm:p-7 border border-slate-200 shadow-2xs flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between gap-3 mb-4">
+                            <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center shrink-0">
+                                <i data-lucide="heart" class="w-6 h-6"></i>
+                            </div>
+                            <span class="font-mono text-xs sm:text-sm font-extrabold px-3 py-1 rounded-full bg-amber-50 text-amber-800">
+                                04 • Stative Verbs
+                            </span>
+                        </div>
+                        <h3 class="font-heading text-xl font-extrabold text-slate-900 mb-2">
+                            4. Trạng thái, cảm xúc, suy nghĩ cố định
+                        </h3>
+                        <p class="text-base text-slate-600 mb-5">
+                            Đi với nhóm động từ chỉ trạng thái (không chia tiếp diễn): <strong>like, love, know, believe, have, want, understand...</strong>
+                        </p>
+                    </div>
+                    <div class="bg-slate-50 rounded-2xl p-4 border border-slate-200/80 flex items-center justify-between gap-3">
+                        <div>
+                            <p class="font-heading font-bold text-base sm:text-lg text-slate-900">
+                                I <span class="text-amber-600 underline decoration-2">understand</span> the lesson clearly.
+                            </p>
+                            <p class="text-sm text-slate-500 mt-0.5">Tôi hiểu bài học một cách rõ ràng.</p>
+                        </div>
+                        <button type="button" onclick="speakText('I understand the lesson clearly.')" title="Nghe ví dụ"
+                            class="w-11 h-11 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 flex items-center justify-center shrink-0 shadow-xs cursor-pointer">
+                            <i data-lucide="volume-2" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 4. SECTION II: STRUCTURE - CẤU TRÚC ==================== -->
+    <section id="sec-structure" class="py-12 sm:py-16 bg-white border-b border-slate-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="mb-8">
+                <span class="inline-block px-3.5 py-1 rounded-full bg-sky-100 text-sky-700 text-xs sm:text-sm font-extrabold uppercase tracking-wider mb-2">
+                    Phần II • Sentence Formulas
+                </span>
+                <h2 class="font-heading text-2xl sm:text-3xl font-extrabold text-slate-900">
+                    II. STRUCTURE — CẤU TRÚC CÂU
+                </h2>
+                <p class="text-base text-slate-600 mt-1">
+                    Phân biệt rõ 2 nhóm động từ: <strong>Động từ TO BE</strong> và <strong>Động từ THƯỜNG</strong>.
+                </p>
+            </div>
+
+            <!-- Two-Column Side-by-Side Structure Cards -->
+            <div class="grid lg:grid-cols-2 gap-7 mb-10">
+                <!-- COLUMN 1: TO BE -->
+                <div class="bg-slate-50 rounded-3xl p-6 sm:p-7 border-2 border-indigo-200 shadow-2xs">
+                    <div class="flex items-center justify-between gap-2 pb-4 mb-5 border-b border-indigo-200/80">
+                        <div>
+                            <span class="text-xs font-extrabold uppercase tracking-wider text-compass-600">Nhóm 01</span>
+                            <h3 class="font-heading text-xl sm:text-2xl font-extrabold text-slate-900">Động từ TO BE (am / is / are)</h3>
+                        </div>
+                        <span class="px-3 py-1 rounded-xl bg-compass-600 text-white font-mono text-xs sm:text-sm font-bold">
+                            Không dùng do/does
+                        </span>
+                    </div>
+
+                    <!-- Subject Split Pills -->
+                    <div class="grid grid-cols-3 gap-2 mb-5 text-center font-mono text-xs sm:text-sm">
+                        <div class="bg-white rounded-xl p-2.5 border border-indigo-100">
+                            <div class="font-bold text-slate-500">I</div>
+                            <div class="font-extrabold text-compass-600 text-base">am</div>
+                        </div>
+                        <div class="bg-white rounded-xl p-2.5 border border-indigo-100">
+                            <div class="font-bold text-slate-500">He / She / It</div>
+                            <div class="font-extrabold text-compass-600 text-base">is</div>
+                        </div>
+                        <div class="bg-white rounded-xl p-2.5 border border-indigo-100">
+                            <div class="font-bold text-slate-500">You / We / They</div>
+                            <div class="font-extrabold text-compass-600 text-base">are</div>
+                        </div>
+                    </div>
+
+                    <!-- Formulas (+ / - / ? / Wh-) -->
+                    <div class="space-y-3">
+                        <!-- (+) -->
+                        <div class="bg-white rounded-2xl p-4 border border-emerald-200">
+                            <div class="flex items-center gap-2.5 mb-1.5">
+                                <span class="w-7 h-7 rounded-lg bg-emerald-600 text-white font-mono font-extrabold flex items-center justify-center text-sm shrink-0">+</span>
+                                <span class="font-mono font-bold text-sm sm:text-base text-slate-900">S + am / is / are + N / Adj</span>
+                            </div>
+                            <div class="flex items-center justify-between gap-2 pl-9">
+                                <span class="text-sm sm:text-base text-slate-700 font-medium">She <strong>is</strong> a dedicated teacher.</span>
+                                <button type="button" onclick="speakText('She is a dedicated teacher.')" class="p-2 rounded-lg bg-slate-100 hover:bg-compass-100 text-compass-600 cursor-pointer shrink-0">
+                                    <i data-lucide="volume-2" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- (-) -->
+                        <div class="bg-white rounded-2xl p-4 border border-rose-200">
+                            <div class="flex items-center gap-2.5 mb-1.5">
+                                <span class="w-7 h-7 rounded-lg bg-rose-600 text-white font-mono font-extrabold flex items-center justify-center text-sm shrink-0">−</span>
+                                <span class="font-mono font-bold text-sm sm:text-base text-slate-900">S + am / is / are + not + N / Adj</span>
+                            </div>
+                            <div class="flex items-center justify-between gap-2 pl-9">
+                                <span class="text-sm sm:text-base text-slate-700 font-medium">They <strong>aren't</strong> late for class.</span>
+                                <button type="button" onclick="speakText('They are not late for class.')" class="p-2 rounded-lg bg-slate-100 hover:bg-compass-100 text-compass-600 cursor-pointer shrink-0">
+                                    <i data-lucide="volume-2" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- (?) Yes/No -->
+                        <div class="bg-white rounded-2xl p-4 border border-amber-200">
+                            <div class="flex items-center gap-2.5 mb-1.5">
+                                <span class="w-7 h-7 rounded-lg bg-amber-500 text-slate-950 font-mono font-extrabold flex items-center justify-center text-sm shrink-0">?</span>
+                                <span class="font-mono font-bold text-sm sm:text-base text-slate-900">Am / Is / Are + S + N / Adj?</span>
+                            </div>
+                            <div class="flex items-center justify-between gap-2 pl-9">
+                                <span class="text-sm sm:text-base text-slate-700 font-medium"><strong>Are</strong> you ready? — Yes, I am.</span>
+                                <button type="button" onclick="speakText('Are you ready? Yes, I am.')" class="p-2 rounded-lg bg-slate-100 hover:bg-compass-100 text-compass-600 cursor-pointer shrink-0">
+                                    <i data-lucide="volume-2" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Wh- -->
+                        <div class="bg-white rounded-2xl p-4 border border-sky-200">
+                            <div class="flex items-center gap-2.5 mb-1.5">
+                                <span class="px-2 h-7 rounded-lg bg-sky-600 text-white font-mono font-extrabold flex items-center justify-center text-xs shrink-0">Wh</span>
+                                <span class="font-mono font-bold text-sm sm:text-base text-slate-900">Wh-word + am / is / are + S?</span>
+                            </div>
+                            <div class="flex items-center justify-between gap-2 pl-11">
+                                <span class="text-sm sm:text-base text-slate-700 font-medium"><strong>Where is</strong> your classroom?</span>
+                                <button type="button" onclick="speakText('Where is your classroom?')" class="p-2 rounded-lg bg-slate-100 hover:bg-compass-100 text-compass-600 cursor-pointer shrink-0">
+                                    <i data-lucide="volume-2" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COLUMN 2: ORDINARY VERBS -->
+                <div class="bg-slate-50 rounded-3xl p-6 sm:p-7 border-2 border-emerald-200 shadow-2xs">
+                    <div class="flex items-center justify-between gap-2 pb-4 mb-5 border-b border-emerald-200/80">
+                        <div>
+                            <span class="text-xs font-extrabold uppercase tracking-wider text-emerald-600">Nhóm 02</span>
+                            <h3 class="font-heading text-xl sm:text-2xl font-extrabold text-slate-900">Động từ THƯỜNG (Ordinary Verbs)</h3>
+                        </div>
+                        <span class="px-3 py-1 rounded-xl bg-emerald-600 text-white font-mono text-xs sm:text-sm font-bold">
+                            Mượn do / does
+                        </span>
+                    </div>
+
+                    <!-- Subject Split Pills -->
+                    <div class="grid grid-cols-2 gap-2.5 mb-5 text-center font-mono text-xs sm:text-sm">
+                        <div class="bg-white rounded-xl p-2.5 border border-emerald-100">
+                            <div class="font-bold text-slate-500">I / You / We / They / Danh từ số nhiều</div>
+                            <div class="font-extrabold text-emerald-700 text-base">V(nguyên mẫu) • do / don't</div>
+                        </div>
+                        <div class="bg-white rounded-xl p-2.5 border border-emerald-100">
+                            <div class="font-bold text-slate-500">He / She / It / Danh từ số ít</div>
+                            <div class="font-extrabold text-rose-600 text-base">V(s/es) • does / doesn't</div>
+                        </div>
+                    </div>
+
+                    <!-- Formulas (+ / - / ? / Wh-) -->
+                    <div class="space-y-3">
+                        <!-- (+) -->
+                        <div class="bg-white rounded-2xl p-4 border border-emerald-200">
+                            <div class="flex items-center gap-2.5 mb-1.5">
+                                <span class="w-7 h-7 rounded-lg bg-emerald-600 text-white font-mono font-extrabold flex items-center justify-center text-sm shrink-0">+</span>
+                                <span class="font-mono font-bold text-sm sm:text-base text-slate-900">S + V(bare) / V(s/es)</span>
+                            </div>
+                            <div class="flex items-center justify-between gap-2 pl-9">
+                                <span class="text-sm sm:text-base text-slate-700 font-medium">He <strong>plays</strong> badminton on Sundays.</span>
+                                <button type="button" onclick="speakText('He plays badminton on Sundays.')" class="p-2 rounded-lg bg-slate-100 hover:bg-emerald-100 text-emerald-700 cursor-pointer shrink-0">
+                                    <i data-lucide="volume-2" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- (-) -->
+                        <div class="bg-white rounded-2xl p-4 border border-rose-200">
+                            <div class="flex items-center gap-2.5 mb-1.5">
+                                <span class="w-7 h-7 rounded-lg bg-rose-600 text-white font-mono font-extrabold flex items-center justify-center text-sm shrink-0">−</span>
+                                <span class="font-mono font-bold text-sm sm:text-base text-slate-900">S + don't / doesn't + V(bare)</span>
+                            </div>
+                            <div class="flex items-center justify-between gap-2 pl-9">
+                                <span class="text-sm sm:text-base text-slate-700 font-medium">She <strong>doesn't eat</strong> fast food.</span>
+                                <button type="button" onclick="speakText('She does not eat fast food.')" class="p-2 rounded-lg bg-slate-100 hover:bg-emerald-100 text-emerald-700 cursor-pointer shrink-0">
+                                    <i data-lucide="volume-2" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- (?) Yes/No -->
+                        <div class="bg-white rounded-2xl p-4 border border-amber-200">
+                            <div class="flex items-center gap-2.5 mb-1.5">
+                                <span class="w-7 h-7 rounded-lg bg-amber-500 text-slate-950 font-mono font-extrabold flex items-center justify-center text-sm shrink-0">?</span>
+                                <span class="font-mono font-bold text-sm sm:text-base text-slate-900">Do / Does + S + V(bare)?</span>
+                            </div>
+                            <div class="flex items-center justify-between gap-2 pl-9">
+                                <span class="text-sm sm:text-base text-slate-700 font-medium"><strong>Does</strong> he live here? — Yes, he does.</span>
+                                <button type="button" onclick="speakText('Does he live here? Yes, he does.')" class="p-2 rounded-lg bg-slate-100 hover:bg-emerald-100 text-emerald-700 cursor-pointer shrink-0">
+                                    <i data-lucide="volume-2" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Wh- -->
+                        <div class="bg-white rounded-2xl p-4 border border-sky-200">
+                            <div class="flex items-center gap-2.5 mb-1.5">
+                                <span class="px-2 h-7 rounded-lg bg-sky-600 text-white font-mono font-extrabold flex items-center justify-center text-xs shrink-0">Wh</span>
+                                <span class="font-mono font-bold text-sm sm:text-base text-slate-900">Wh-word + do / does + S + V(bare)?</span>
+                            </div>
+                            <div class="flex items-center justify-between gap-2 pl-11">
+                                <span class="text-sm sm:text-base text-slate-700 font-medium"><strong>What time do</strong> you wake up?</span>
+                                <button type="button" onclick="speakText('What time do you wake up?')" class="p-2 rounded-lg bg-slate-100 hover:bg-emerald-100 text-emerald-700 cursor-pointer shrink-0">
+                                    <i data-lucide="volume-2" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- INTERACTIVE SENTENCE BUILDER WIDGET -->
+            <div class="bg-slate-900 rounded-3xl p-6 sm:p-8 text-white shadow-xl">
+                <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+                    <div>
+                        <span class="text-xs font-extrabold uppercase tracking-wider text-amber-300">Thực hành trực quan</span>
+                        <h3 class="font-heading text-xl sm:text-2xl font-extrabold text-white">
+                            Máy Lắp Ghép Câu Tương Tác
+                        </h3>
+                    </div>
+                    <span class="text-xs sm:text-sm text-slate-300">Chọn <strong>Chủ ngữ</strong> và <strong>Thể câu</strong> để xem động từ tự biến đổi</span>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-4 mb-6">
+                    <!-- Subject Buttons -->
+                    <div>
+                        <div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">1. Chọn Chủ ngữ (Subject)</div>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                            <button type="button" id="sb-subj-I" onclick="setBuilderSubject('I')" class="py-2.5 px-3 rounded-xl font-mono font-bold text-sm cursor-pointer transition-all">I</button>
+                            <button type="button" id="sb-subj-He" onclick="setBuilderSubject('He')" class="py-2.5 px-3 rounded-xl font-mono font-bold text-sm cursor-pointer transition-all">He</button>
+                            <button type="button" id="sb-subj-They" onclick="setBuilderSubject('They')" class="py-2.5 px-3 rounded-xl font-mono font-bold text-sm cursor-pointer transition-all">They</button>
+                            <button type="button" id="sb-subj-My sister" onclick="setBuilderSubject('My sister')" class="py-2.5 px-3 rounded-xl font-mono font-bold text-sm cursor-pointer transition-all">My sister</button>
+                        </div>
+                    </div>
+
+                    <!-- Polarity Buttons -->
+                    <div>
+                        <div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">2. Chọn Thể câu (Form)</div>
+                        <div class="grid grid-cols-3 gap-2">
+                            <button type="button" id="sb-form-pos" onclick="setBuilderForm('pos')" class="py-2.5 px-3 rounded-xl font-bold text-sm cursor-pointer transition-all">(+) Khẳng định</button>
+                            <button type="button" id="sb-form-neg" onclick="setBuilderForm('neg')" class="py-2.5 px-3 rounded-xl font-bold text-sm cursor-pointer transition-all">(−) Phủ định</button>
+                            <button type="button" id="sb-form-que" onclick="setBuilderForm('que')" class="py-2.5 px-3 rounded-xl font-bold text-sm cursor-pointer transition-all">(?) Nghi vấn</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live Output Box -->
+                <div class="bg-slate-800/90 rounded-2xl p-5 border border-slate-700 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div>
+                        <div id="sb-formula-tag" class="font-mono text-xs sm:text-sm font-bold text-sky-300 mb-1">
+                            Công thức: S + V(bare)
+                        </div>
+                        <div id="sb-sentence-en" class="font-heading text-xl sm:text-2xl font-extrabold text-amber-300">
+                            I study English every day.
+                        </div>
+                        <div id="sb-sentence-vi" class="text-sm sm:text-base text-slate-300 mt-1">
+                            Tôi học tiếng Anh mỗi ngày.
+                        </div>
+                    </div>
+                    <button type="button" onclick="speakBuilderSentence()"
+                        class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-compass-600 hover:bg-compass-500 text-white font-bold text-sm sm:text-base shrink-0 cursor-pointer">
+                        <i data-lucide="volume-2" class="w-5 h-5"></i>
+                        <span>Đọc câu này</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 5. SECTION III: CÁCH THÊM S, ES ==================== -->
+    <section id="sec-spelling" class="py-12 sm:py-16 bg-slate-50 border-b border-slate-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="mb-8">
+                <span class="inline-block px-3.5 py-1 rounded-full bg-amber-100 text-amber-800 text-xs sm:text-sm font-extrabold uppercase tracking-wider mb-2">
+                    Phần III • Spelling Rules
+                </span>
+                <h2 class="font-heading text-2xl sm:text-3xl font-extrabold text-slate-900">
+                    III. CÁCH THÊM S, ES VÀO SAU ĐỘNG TỪ Ở NGÔI THỨ 3 SỐ ÍT
+                </h2>
+                <p class="text-base text-slate-600 mt-1">
+                    Áp dụng trong câu khẳng định (+) khi chủ ngữ là <strong>He, She, It</strong> hoặc <strong>Danh từ số ít / không đếm được</strong>.
+                </p>
+            </div>
+
+            <!-- 4 Spelling Rule Cards -->
+            <div class="grid md:grid-cols-2 gap-6 mb-8">
+                <!-- Rule 1 -->
+                <div class="lesson-card bg-white rounded-3xl p-6 border border-slate-200">
+                    <div class="flex items-center justify-between gap-2 mb-3">
+                        <span class="font-mono text-xs sm:text-sm font-extrabold px-3 py-1 rounded-xl bg-rose-100 text-rose-700">
+                            Quy tắc 1 • Thêm -ES
+                        </span>
+                        <span class="text-xs sm:text-sm font-bold text-amber-700 bg-amber-50 px-3 py-1 rounded-full">
+                            Mẹo: "Ông Sáu chạy xe SH zởm"
+                        </span>
+                    </div>
+                    <p class="text-base text-slate-700 mb-4">
+                        Động từ kết thúc bằng <strong class="font-mono text-rose-600">-o, -s, -x, -z, -ch, -sh</strong> → thêm <strong>-es</strong>.
+                    </p>
+                    <div class="grid grid-cols-2 gap-2.5 font-mono text-sm sm:text-base">
+                        <button type="button" onclick="speakText('go, goes')" class="flex items-center justify-between bg-slate-50 hover:bg-indigo-50 px-3.5 py-2.5 rounded-xl border border-slate-200 cursor-pointer">
+                            <span>go → <strong class="text-rose-600">goes</strong></span>
+                            <i data-lucide="volume-2" class="w-4 h-4 text-slate-400"></i>
+                        </button>
+                        <button type="button" onclick="speakText('watch, watches')" class="flex items-center justify-between bg-slate-50 hover:bg-indigo-50 px-3.5 py-2.5 rounded-xl border border-slate-200 cursor-pointer">
+                            <span>watch → <strong class="text-rose-600">watches</strong></span>
+                            <i data-lucide="volume-2" class="w-4 h-4 text-slate-400"></i>
+                        </button>
+                        <button type="button" onclick="speakText('wash, washes')" class="flex items-center justify-between bg-slate-50 hover:bg-indigo-50 px-3.5 py-2.5 rounded-xl border border-slate-200 cursor-pointer">
+                            <span>wash → <strong class="text-rose-600">washes</strong></span>
+                            <i data-lucide="volume-2" class="w-4 h-4 text-slate-400"></i>
+                        </button>
+                        <button type="button" onclick="speakText('fix, fixes')" class="flex items-center justify-between bg-slate-50 hover:bg-indigo-50 px-3.5 py-2.5 rounded-xl border border-slate-200 cursor-pointer">
+                            <span>fix → <strong class="text-rose-600">fixes</strong></span>
+                            <i data-lucide="volume-2" class="w-4 h-4 text-slate-400"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Rule 2 -->
+                <div class="lesson-card bg-white rounded-3xl p-6 border border-slate-200">
+                    <div class="flex items-center justify-between gap-2 mb-3">
+                        <span class="font-mono text-xs sm:text-sm font-extrabold px-3 py-1 rounded-xl bg-indigo-100 text-compass-700">
+                            Quy tắc 2 • Đổi Y → IES
+                        </span>
+                        <span class="text-xs sm:text-sm font-bold text-slate-500">Phụ âm + Y</span>
+                    </div>
+                    <p class="text-base text-slate-700 mb-4">
+                        Động từ tận cùng là <strong class="font-mono text-compass-600">Phụ âm + y</strong> → đổi <strong>y</strong> thành <strong>i</strong> rồi thêm <strong>-es</strong>.
+                    </p>
+                    <div class="grid grid-cols-2 gap-2.5 font-mono text-sm sm:text-base">
+                        <button type="button" onclick="speakText('study, studies')" class="flex items-center justify-between bg-slate-50 hover:bg-indigo-50 px-3.5 py-2.5 rounded-xl border border-slate-200 cursor-pointer">
+                            <span>study → <strong class="text-compass-600">studies</strong></span>
+                            <i data-lucide="volume-2" class="w-4 h-4 text-slate-400"></i>
+                        </button>
+                        <button type="button" onclick="speakText('fly, flies')" class="flex items-center justify-between bg-slate-50 hover:bg-indigo-50 px-3.5 py-2.5 rounded-xl border border-slate-200 cursor-pointer">
+                            <span>fly → <strong class="text-compass-600">flies</strong></span>
+                            <i data-lucide="volume-2" class="w-4 h-4 text-slate-400"></i>
+                        </button>
+                        <button type="button" onclick="speakText('try, tries')" class="flex items-center justify-between bg-slate-50 hover:bg-indigo-50 px-3.5 py-2.5 rounded-xl border border-slate-200 cursor-pointer">
+                            <span>try → <strong class="text-compass-600">tries</strong></span>
+                            <i data-lucide="volume-2" class="w-4 h-4 text-slate-400"></i>
+                        </button>
+                        <button type="button" onclick="speakText('cry, cries')" class="flex items-center justify-between bg-slate-50 hover:bg-indigo-50 px-3.5 py-2.5 rounded-xl border border-slate-200 cursor-pointer">
+                            <span>cry → <strong class="text-compass-600">cries</strong></span>
+                            <i data-lucide="volume-2" class="w-4 h-4 text-slate-400"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Rule 3 -->
+                <div class="lesson-card bg-white rounded-3xl p-6 border border-slate-200">
+                    <div class="flex items-center justify-between gap-2 mb-3">
+                        <span class="font-mono text-xs sm:text-sm font-extrabold px-3 py-1 rounded-xl bg-sky-100 text-sky-700">
+                            Quy tắc 3 • Giữ nguyên Y + S
+                        </span>
+                        <span class="text-xs sm:text-sm font-bold text-sky-700 bg-sky-50 px-3 py-1 rounded-full">Nguyên âm: u, e, o, a, i</span>
+                    </div>
+                    <p class="text-base text-slate-700 mb-4">
+                        Động từ tận cùng là <strong class="font-mono text-sky-600">Nguyên âm + y</strong> → giữ nguyên <strong>y</strong> và thêm <strong>-s</strong>.
+                    </p>
+                    <div class="grid grid-cols-2 gap-2.5 font-mono text-sm sm:text-base">
+                        <button type="button" onclick="speakText('play, plays')" class="flex items-center justify-between bg-slate-50 hover:bg-sky-50 px-3.5 py-2.5 rounded-xl border border-slate-200 cursor-pointer">
+                            <span>play → <strong class="text-sky-600">plays</strong></span>
+                            <i data-lucide="volume-2" class="w-4 h-4 text-slate-400"></i>
+                        </button>
+                        <button type="button" onclick="speakText('stay, stays')" class="flex items-center justify-between bg-slate-50 hover:bg-sky-50 px-3.5 py-2.5 rounded-xl border border-slate-200 cursor-pointer">
+                            <span>stay → <strong class="text-sky-600">stays</strong></span>
+                            <i data-lucide="volume-2" class="w-4 h-4 text-slate-400"></i>
+                        </button>
+                        <button type="button" onclick="speakText('enjoy, enjoys')" class="flex items-center justify-between bg-slate-50 hover:bg-sky-50 px-3.5 py-2.5 rounded-xl border border-slate-200 cursor-pointer">
+                            <span>enjoy → <strong class="text-sky-600">enjoys</strong></span>
+                            <i data-lucide="volume-2" class="w-4 h-4 text-slate-400"></i>
+                        </button>
+                        <button type="button" onclick="speakText('buy, buys')" class="flex items-center justify-between bg-slate-50 hover:bg-sky-50 px-3.5 py-2.5 rounded-xl border border-slate-200 cursor-pointer">
+                            <span>buy → <strong class="text-sky-600">buys</strong></span>
+                            <i data-lucide="volume-2" class="w-4 h-4 text-slate-400"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Rule 4 -->
+                <div class="lesson-card bg-white rounded-3xl p-6 border border-slate-200">
+                    <div class="flex items-center justify-between gap-2 mb-3">
+                        <span class="font-mono text-xs sm:text-sm font-extrabold px-3 py-1 rounded-xl bg-emerald-100 text-emerald-700">
+                            Quy tắc 4 • Còn lại & Ngoại lệ
+                        </span>
+                        <span class="text-xs sm:text-sm font-bold text-rose-600 bg-rose-50 px-3 py-1 rounded-full">Đặc biệt: have → has</span>
+                    </div>
+                    <p class="text-base text-slate-700 mb-4">
+                        Các động từ còn lại thêm <strong class="font-mono text-emerald-600">-s</strong>. Riêng động từ <strong>have</strong> đổi thành <strong>has</strong>.
+                    </p>
+                    <div class="grid grid-cols-2 gap-2.5 font-mono text-sm sm:text-base">
+                        <button type="button" onclick="speakText('work, works')" class="flex items-center justify-between bg-slate-50 hover:bg-emerald-50 px-3.5 py-2.5 rounded-xl border border-slate-200 cursor-pointer">
+                            <span>work → <strong class="text-emerald-600">works</strong></span>
+                            <i data-lucide="volume-2" class="w-4 h-4 text-slate-400"></i>
+                        </button>
+                        <button type="button" onclick="speakText('read, reads')" class="flex items-center justify-between bg-slate-50 hover:bg-emerald-50 px-3.5 py-2.5 rounded-xl border border-slate-200 cursor-pointer">
+                            <span>read → <strong class="text-emerald-600">reads</strong></span>
+                            <i data-lucide="volume-2" class="w-4 h-4 text-slate-400"></i>
+                        </button>
+                        <button type="button" onclick="speakText('live, lives')" class="flex items-center justify-between bg-slate-50 hover:bg-emerald-50 px-3.5 py-2.5 rounded-xl border border-slate-200 cursor-pointer">
+                            <span>live → <strong class="text-emerald-600">lives</strong></span>
+                            <i data-lucide="volume-2" class="w-4 h-4 text-slate-400"></i>
+                        </button>
+                        <button type="button" onclick="speakText('have, has')" class="flex items-center justify-between bg-rose-50 hover:bg-rose-100 px-3.5 py-2.5 rounded-xl border border-rose-200 cursor-pointer">
+                            <span>have → <strong class="text-rose-600">has</strong></span>
+                            <i data-lucide="volume-2" class="w-4 h-4 text-rose-500"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pronunciation Tip Banner (/s/, /z/, /ɪz/) -->
+            <div class="bg-indigo-50/90 rounded-2xl p-5 border border-indigo-200 mb-8">
+                <div class="font-heading font-extrabold text-base sm:text-lg text-compass-900 mb-2 flex items-center gap-2">
+                    <i data-lucide="mic" class="w-5 h-5 text-compass-600"></i>
+                    Mẹo phát âm đuôi -S / -ES chuẩn bản xứ:
+                </div>
+                <div class="grid sm:grid-cols-3 gap-3 text-sm sm:text-base">
+                    <div class="bg-white rounded-xl p-3 border border-indigo-100">
+                        <span class="font-mono font-extrabold text-rose-600">/ɪz/</span> — Sau âm gió <span class="font-mono text-xs">-s, -z, -sh, -ch, -ge, -ce</span> (watches, washes).
+                    </div>
+                    <div class="bg-white rounded-xl p-3 border border-indigo-100">
+                        <span class="font-mono font-extrabold text-compass-600">/s/</span> — Sau âm vô thanh <span class="font-mono text-xs">-p, -k, -t, -f, -th</span> (stops, works, eats).
+                    </div>
+                    <div class="bg-white rounded-xl p-3 border border-indigo-100">
+                        <span class="font-mono font-extrabold text-emerald-600">/z/</span> — Sau các âm hữu thanh & nguyên âm còn lại (plays, goes, reads).
+                    </div>
+                </div>
+            </div>
+
+            <!-- INTERACTIVE VERB TRANSFORMER -->
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border-2 border-amber-200 shadow-sm">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                    <div>
+                        <span class="text-xs font-extrabold uppercase tracking-wider text-amber-700">Công cụ tra cứu nhanh</span>
+                        <h3 class="font-heading text-xl sm:text-2xl font-extrabold text-slate-900">
+                            Máy Chia Đuôi Động Từ S / ES
+                        </h3>
+                    </div>
+                    <span class="text-sm text-slate-500">Bấm từ mẫu hoặc nhập động từ nguyên mẫu</span>
+                </div>
+
+                <!-- Sample Pills -->
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <button type="button" onclick="transformVerb('go')" class="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-amber-100 font-mono font-bold text-sm text-slate-800 cursor-pointer">go</button>
+                    <button type="button" onclick="transformVerb('study')" class="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-amber-100 font-mono font-bold text-sm text-slate-800 cursor-pointer">study</button>
+                    <button type="button" onclick="transformVerb('play')" class="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-amber-100 font-mono font-bold text-sm text-slate-800 cursor-pointer">play</button>
+                    <button type="button" onclick="transformVerb('watch')" class="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-amber-100 font-mono font-bold text-sm text-slate-800 cursor-pointer">watch</button>
+                    <button type="button" onclick="transformVerb('have')" class="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-amber-100 font-mono font-bold text-sm text-slate-800 cursor-pointer">have</button>
+                    <button type="button" onclick="transformVerb('fix')" class="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-amber-100 font-mono font-bold text-sm text-slate-800 cursor-pointer">fix</button>
+                    <button type="button" onclick="transformVerb('cry')" class="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-amber-100 font-mono font-bold text-sm text-slate-800 cursor-pointer">cry</button>
+                    <button type="button" onclick="transformVerb('buy')" class="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-amber-100 font-mono font-bold text-sm text-slate-800 cursor-pointer">buy</button>
+                    <button type="button" onclick="transformVerb('wash')" class="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-amber-100 font-mono font-bold text-sm text-slate-800 cursor-pointer">wash</button>
+                </div>
+
+                <!-- Custom Input + Live Result -->
+                <div class="grid md:grid-cols-12 gap-4 items-center">
+                    <div class="md:col-span-5 flex gap-2">
+                        <input type="text" id="verb-custom-input" value="study" placeholder="Nhập động từ (vd: teach)..."
+                            oninput="transformVerb(this.value)"
+                            class="w-full px-4 py-3 rounded-2xl border-2 border-slate-200 focus:border-compass-600 focus:outline-none font-mono font-bold text-base text-slate-900">
+                    </div>
+
+                    <div class="md:col-span-7 bg-slate-900 text-white rounded-2xl p-4 flex items-center justify-between gap-3">
+                        <div>
+                            <div class="flex items-center gap-3 font-mono text-lg sm:text-xl font-extrabold">
+                                <span id="vt-base" class="text-slate-300">study</span>
+                                <span class="text-amber-400">→</span>
+                                <span id="vt-result" class="text-emerald-400">studies</span>
+                            </div>
+                            <p id="vt-explain" class="text-xs sm:text-sm text-slate-300 mt-1">
+                                Tận cùng là phụ âm "d" + "y" → đổi y thành i + es.
+                            </p>
+                        </div>
+                        <button type="button" onclick="speakVerbTransformer()"
+                            class="w-11 h-11 rounded-xl bg-compass-600 hover:bg-compass-500 text-white flex items-center justify-center shrink-0 cursor-pointer">
+                            <i data-lucide="volume-2" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 6. SECTION IV: DẤU HIỆU NHẬN BIẾT ==================== -->
+    <section id="sec-signals" class="py-12 sm:py-16 bg-white border-b border-slate-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="mb-8">
+                <span class="inline-block px-3.5 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs sm:text-sm font-extrabold uppercase tracking-wider mb-2">
+                    Phần IV • Signal Words
+                </span>
+                <h2 class="font-heading text-2xl sm:text-3xl font-extrabold text-slate-900">
+                    IV. DẤU HIỆU NHẬN BIẾT THÌ HIỆN TẠI ĐƠN
+                </h2>
+                <p class="text-base text-slate-600 mt-1">Nhận diện nhanh qua 2 nhóm từ khóa kinh điển trong câu.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-7">
+                <!-- Group 1: Adverbs of Frequency with % Meter -->
+                <div class="lg:col-span-7 bg-slate-50 rounded-3xl p-6 sm:p-7 border border-slate-200">
+                    <h3 class="font-heading text-xl font-extrabold text-slate-900 mb-1">
+                        1. Trạng từ chỉ tần suất (Adverbs of Frequency)
+                    </h3>
+                    <p class="text-sm sm:text-base text-slate-600 mb-5">
+                        Vị trí vàng: Đứng <strong>TRƯỚC động từ thường</strong>, đứng <strong>SAU động từ To Be</strong>.
+                    </p>
+
+                    <div class="space-y-3">
+                        <!-- 100% -->
+                        <div class="bg-white rounded-2xl p-3.5 border border-slate-200/80">
+                            <div class="flex items-center justify-between text-sm sm:text-base font-bold mb-1.5">
+                                <span class="font-mono text-compass-700">Always <span class="font-sans font-normal text-slate-500">(luôn luôn)</span></span>
+                                <span class="font-mono text-emerald-600">100%</span>
+                            </div>
+                            <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden">
+                                <div class="h-full bg-emerald-500 rounded-full" style="width: 100%"></div>
+                            </div>
+                        </div>
+
+                        <!-- 85% -->
+                        <div class="bg-white rounded-2xl p-3.5 border border-slate-200/80">
+                            <div class="flex items-center justify-between text-sm sm:text-base font-bold mb-1.5">
+                                <span class="font-mono text-compass-700">Usually <span class="font-sans font-normal text-slate-500">(thường xuyên)</span></span>
+                                <span class="font-mono text-emerald-600">85%</span>
+                            </div>
+                            <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden">
+                                <div class="h-full bg-emerald-500 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+
+                        <!-- 70% -->
+                        <div class="bg-white rounded-2xl p-3.5 border border-slate-200/80">
+                            <div class="flex items-center justify-between text-sm sm:text-base font-bold mb-1.5">
+                                <span class="font-mono text-compass-700">Often / Frequently <span class="font-sans font-normal text-slate-500">(thường)</span></span>
+                                <span class="font-mono text-sky-600">70%</span>
+                            </div>
+                            <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden">
+                                <div class="h-full bg-sky-500 rounded-full" style="width: 70%"></div>
+                            </div>
+                        </div>
+
+                        <!-- 50% -->
+                        <div class="bg-white rounded-2xl p-3.5 border border-slate-200/80">
+                            <div class="flex items-center justify-between text-sm sm:text-base font-bold mb-1.5">
+                                <span class="font-mono text-compass-700">Sometimes <span class="font-sans font-normal text-slate-500">(thỉnh thoảng)</span></span>
+                                <span class="font-mono text-amber-600">50%</span>
+                            </div>
+                            <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden">
+                                <div class="h-full bg-amber-400 rounded-full" style="width: 50%"></div>
+                            </div>
+                        </div>
+
+                        <!-- 15% -->
+                        <div class="bg-white rounded-2xl p-3.5 border border-slate-200/80">
+                            <div class="flex items-center justify-between text-sm sm:text-base font-bold mb-1.5">
+                                <span class="font-mono text-compass-700">Seldom / Rarely <span class="font-sans font-normal text-slate-500">(hiếm khi)</span></span>
+                                <span class="font-mono text-orange-600">15%</span>
+                            </div>
+                            <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden">
+                                <div class="h-full bg-orange-400 rounded-full" style="width: 15%"></div>
+                            </div>
+                        </div>
+
+                        <!-- 0% -->
+                        <div class="bg-white rounded-2xl p-3.5 border border-slate-200/80">
+                            <div class="flex items-center justify-between text-sm sm:text-base font-bold mb-1.5">
+                                <span class="font-mono text-rose-600">Never <span class="font-sans font-normal text-slate-500">(không bao giờ)</span></span>
+                                <span class="font-mono text-rose-600">0%</span>
+                            </div>
+                            <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden">
+                                <div class="h-full bg-rose-500 rounded-full" style="width: 3%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Position Mini-Box -->
+                    <div class="mt-4 bg-indigo-50 rounded-2xl p-4 border border-indigo-200 text-sm sm:text-base space-y-1.5">
+                        <div class="flex items-center justify-between gap-2">
+                            <span>• Trước V thường: He <strong class="text-compass-700">always gets</strong> up early.</span>
+                            <button type="button" onclick="speakText('He always gets up early.')" class="p-1.5 rounded-lg bg-white text-compass-600 cursor-pointer shrink-0"><i data-lucide="volume-2" class="w-4 h-4"></i></button>
+                        </div>
+                        <div class="flex items-center justify-between gap-2">
+                            <span>• Sau To Be: She <strong class="text-compass-700">is never</strong> late for school.</span>
+                            <button type="button" onclick="speakText('She is never late for school.')" class="p-1.5 rounded-lg bg-white text-compass-600 cursor-pointer shrink-0"><i data-lucide="volume-2" class="w-4 h-4"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Group 2: Repeated Time Phrases -->
+                <div class="lg:col-span-5 bg-slate-50 rounded-3xl p-6 sm:p-7 border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-heading text-xl font-extrabold text-slate-900 mb-1">
+                            2. Cụm từ chỉ thời gian lặp lại
+                        </h3>
+                        <p class="text-sm sm:text-base text-slate-600 mb-5">
+                            Thường đứng ở <strong>cuối câu</strong> (hoặc đầu câu ngăn cách bởi dấu phẩy).
+                        </p>
+
+                        <div class="space-y-4">
+                            <!-- Every + time -->
+                            <div class="bg-white rounded-2xl p-4 border border-slate-200">
+                                <div class="text-xs font-extrabold uppercase tracking-wider text-emerald-600 mb-2">Nhóm Every + Thời gian</div>
+                                <div class="flex flex-wrap gap-2 font-mono text-sm font-bold">
+                                    <span class="px-3 py-1.5 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200">every day</span>
+                                    <span class="px-3 py-1.5 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200">every morning</span>
+                                    <span class="px-3 py-1.5 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200">every week</span>
+                                    <span class="px-3 py-1.5 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200">every month</span>
+                                    <span class="px-3 py-1.5 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200">every year</span>
+                                </div>
+                            </div>
+
+                            <!-- Frequency count -->
+                            <div class="bg-white rounded-2xl p-4 border border-slate-200">
+                                <div class="text-xs font-extrabold uppercase tracking-wider text-sky-600 mb-2">Nhóm Số lần / Đơn vị thời gian</div>
+                                <div class="flex flex-wrap gap-2 font-mono text-sm font-bold">
+                                    <span class="px-3 py-1.5 rounded-xl bg-sky-50 text-sky-800 border border-sky-200">once a day</span>
+                                    <span class="px-3 py-1.5 rounded-xl bg-sky-50 text-sky-800 border border-sky-200">twice a week</span>
+                                    <span class="px-3 py-1.5 rounded-xl bg-sky-50 text-sky-800 border border-sky-200">three times a month</span>
+                                </div>
+                            </div>
+
+                            <!-- Days & Weekends -->
+                            <div class="bg-white rounded-2xl p-4 border border-slate-200">
+                                <div class="text-xs font-extrabold uppercase tracking-wider text-amber-700 mb-2">Nhóm Thứ trong tuần / Cuối tuần</div>
+                                <div class="flex flex-wrap gap-2 font-mono text-sm font-bold">
+                                    <span class="px-3 py-1.5 rounded-xl bg-amber-50 text-amber-800 border border-amber-200">on Mondays</span>
+                                    <span class="px-3 py-1.5 rounded-xl bg-amber-50 text-amber-800 border border-amber-200">on Sundays</span>
+                                    <span class="px-3 py-1.5 rounded-xl bg-amber-50 text-amber-800 border border-amber-200">at weekends</span>
+                                    <span class="px-3 py-1.5 rounded-xl bg-amber-50 text-amber-800 border border-amber-200">in the morning</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 bg-slate-900 text-white rounded-2xl p-4 flex items-center justify-between gap-3">
+                        <div>
+                            <div class="text-xs font-bold text-amber-300">Ví dụ tổng hợp:</div>
+                            <div class="font-heading font-bold text-base">We play football <span class="text-emerald-400">twice a week</span>.</div>
+                        </div>
+                        <button type="button" onclick="speakText('We play football twice a week.')" class="w-10 h-10 rounded-xl bg-compass-600 hover:bg-compass-500 text-white flex items-center justify-center shrink-0 cursor-pointer">
+                            <i data-lucide="volume-2" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 7. MỘT SỐ BÀI TẬP ÁP DỤNG (10 CÂU TƯƠNG TÁC) ==================== -->
+    <section id="sec-practice" class="py-12 sm:py-16 bg-slate-50">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+                <div>
+                    <span class="inline-block px-3.5 py-1 rounded-full bg-rose-100 text-rose-700 text-xs sm:text-sm font-extrabold uppercase tracking-wider mb-2">
+                        Interactive Practice Zone
+                    </span>
+                    <h2 class="font-heading text-2xl sm:text-3xl font-extrabold text-slate-900">
+                        MỘT SỐ BÀI TẬP ÁP DỤNG (10 CÂU)
+                    </h2>
+                    <p class="text-base text-slate-600 mt-1">Hoàn thành cả 2 phần bên dưới và bấm <strong>Chấm điểm toàn bài</strong> để xem giải thích chi tiết.</p>
+                </div>
+
+                <!-- Live Score Pill -->
+                <div class="bg-slate-900 text-white px-5 py-3 rounded-2xl flex items-center gap-3 shadow-md self-start sm:self-auto">
+                    <i data-lucide="award" class="w-6 h-6 text-amber-400"></i>
+                    <div>
+                        <div class="text-xs text-slate-400 font-semibold">Điểm số hiện tại</div>
+                        <div class="font-mono font-extrabold text-lg text-emerald-400">
+                            <span id="total-score-display">0</span> / 10 điểm
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PART A: 5 FILL-IN-THE-BLANK QUESTIONS -->
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-2xs mb-8">
+                <div class="flex items-center justify-between gap-2 pb-4 mb-6 border-b border-slate-100">
+                    <h3 class="font-heading text-xl font-extrabold text-compass-700">
+                        Phần A: Chia động từ trong ngoặc ở thì Hiện tại đơn (5 câu)
+                    </h3>
+                    <span class="text-xs sm:text-sm font-bold px-3 py-1 rounded-full bg-indigo-50 text-compass-700">Gõ đáp án</span>
+                </div>
+
+                <div id="part-a-container" class="space-y-5">
+                    <!-- Rendered by JS -->
+                </div>
+            </div>
+
+            <!-- PART B: 5 MULTIPLE CHOICE QUESTIONS -->
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-2xs mb-8">
+                <div class="flex items-center justify-between gap-2 pb-4 mb-6 border-b border-slate-100">
+                    <h3 class="font-heading text-xl font-extrabold text-emerald-700">
+                        Phần B: Chọn đáp án đúng nhất A, B, C hoặc D (5 câu)
+                    </h3>
+                    <span class="text-xs sm:text-sm font-bold px-3 py-1 rounded-full bg-emerald-50 text-emerald-700">Trắc nghiệm</span>
+                </div>
+
+                <div id="part-b-container" class="space-y-6">
+                    <!-- Rendered by JS -->
+                </div>
+            </div>
+
+            <!-- Action Buttons & Final Summary Banner -->
+            <div class="bg-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-5">
+                <div id="practice-summary-text">
+                    <h4 class="font-heading text-xl font-extrabold text-white">Sẵn sàng kiểm tra kết quả?</h4>
+                    <p class="text-sm sm:text-base text-slate-300 mt-1">Bấm nút chấm điểm để xem đáp án đúng và giải thích từng câu.</p>
+                </div>
+
+                <div class="flex flex-wrap items-center gap-3 w-full sm:w-auto justify-end">
+                    <button type="button" onclick="resetAllExercises()"
+                        class="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-sm sm:text-base border border-slate-700 transition-colors cursor-pointer">
+                        <i data-lucide="rotate-ccw" class="w-5 h-5"></i>
+                        <span>Làm lại bài tập</span>
+                    </button>
+                    <button type="button" onclick="gradeAllExercises()"
+                        class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-sm sm:text-base shadow-lg shadow-emerald-500/20 transition-all cursor-pointer">
+                        <i data-lucide="check-circle-2" class="w-5 h-5"></i>
+                        <span>Chấm điểm toàn bài</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 8. FOOTER ==================== -->
+    <footer class="bg-slate-900 text-slate-400 py-10 border-t border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
+            <div class="flex items-center gap-2.5">
+                <span class="font-heading font-extrabold text-lg text-white">Compass <span class="text-compass-400">English</span></span>
+                <span>•</span>
+                <span class="text-sky-400 font-semibold">The Present Simple Tense</span>
+            </div>
+            <button type="button" onclick="scrollToId('hero-top')"
+                class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs sm:text-sm cursor-pointer">
+                <i data-lucide="arrow-up" class="w-4 h-4"></i>
+                <span>Lên đầu bài giảng</span>
+            </button>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="lesson-toast" class="fixed bottom-5 right-5 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="bg-slate-900 text-white px-4 py-3 rounded-2xl shadow-xl border border-slate-700 flex items-center gap-2.5 text-sm font-medium">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+            <span id="lesson-toast-text">Thông báo</span>
+        </div>
+    </div>
+
+    <!-- ==================== JAVASCRIPT LOGIC ==================== -->
+    <script>
+        /**
+         * 1. WEB SPEECH API (US / UK PRONUNCIATION)
+         */
+        let selectedAccent = 'en-US';
+        let toastTimeout = null;
+
+        function setAccent(langCode) {
+            selectedAccent = langCode;
+            const usBtn = document.getElementById('accent-us');
+            const gbBtn = document.getElementById('accent-gb');
+            if (langCode === 'en-US') {
+                usBtn.className = 'px-3 py-1.5 rounded-lg text-xs sm:text-sm font-bold bg-compass-600 text-white shadow-2xs transition-all cursor-pointer';
+                gbBtn.className = 'px-3 py-1.5 rounded-lg text-xs sm:text-sm font-bold text-slate-600 hover:text-slate-900 transition-all cursor-pointer';
+            } else {
+                gbBtn.className = 'px-3 py-1.5 rounded-lg text-xs sm:text-sm font-bold bg-compass-600 text-white shadow-2xs transition-all cursor-pointer';
+                usBtn.className = 'px-3 py-1.5 rounded-lg text-xs sm:text-sm font-bold text-slate-600 hover:text-slate-900 transition-all cursor-pointer';
+            }
+            showToast(langCode === 'en-US' ? 'Đã chuyển sang giọng Anh - Mỹ (US)' : 'Đã chuyển sang giọng Anh - Anh (UK)');
+        }
+
+        function speakText(text) {
+            if (!text || !('speechSynthesis' in window)) {
+                showToast('Trình duyệt không hỗ trợ đọc tự động.');
+                return;
+            }
+            try {
+                window.speechSynthesis.cancel();
+                const utter = new SpeechSynthesisUtterance(text);
+                utter.lang = selectedAccent;
+                utter.rate = 0.9;
+                const voices = window.speechSynthesis.getVoices();
+                const match = voices.find(v => v.lang.includes(selectedAccent) && (v.name.includes('Google') || v.name.includes('Natural')))
+                           || voices.find(v => v.lang.includes(selectedAccent))
+                           || voices.find(v => v.lang.startsWith('en'));
+                if (match) utter.voice = match;
+                showToast(`Đang đọc: "${text}"`);
+                window.speechSynthesis.speak(utter);
+            } catch (e) {}
+        }
+
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('lesson-toast');
+            document.getElementById('lesson-toast-text').textContent = msg;
+            toast.classList.remove('translate-y-24', 'opacity-0');
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.add('translate-y-24', 'opacity-0');
+            }, 2200);
+        }
+
+        function scrollToId(id) {
+            const el = document.getElementById(id);
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        /**
+         * 2. INTERACTIVE SENTENCE BUILDER (SECTION II)
+         */
+        let builderSubj = 'I';
+        let builderForm = 'pos';
+
+        const BUILDER_MAP = {
+            'I': {
+                pos: { formula: 'Công thức: S + V(bare)', en: 'I study English every day.', vi: 'Tôi học tiếng Anh mỗi ngày.' },
+                neg: { formula: "Công thức: S + don't + V(bare)", en: "I don't study English on Sundays.", vi: 'Tôi không học tiếng Anh vào Chủ nhật.' },
+                que: { formula: 'Công thức: Do + S + V(bare)?', en: 'Do I study English well?', vi: 'Tôi học tiếng Anh có tốt không?' }
+            },
+            'He': {
+                pos: { formula: 'Công thức: S + V(s/es) [study → studies]', en: 'He studies English every day.', vi: 'Anh ấy học tiếng Anh mỗi ngày.' },
+                neg: { formula: "Công thức: S + doesn't + V(bare)", en: "He doesn't study English on Sundays.", vi: 'Anh ấy không học tiếng Anh vào Chủ nhật.' },
+                que: { formula: 'Công thức: Does + S + V(bare)?', en: 'Does he study English every day?', vi: 'Anh ấy có học tiếng Anh mỗi ngày không?' }
+            },
+            'They': {
+                pos: { formula: 'Công thức: S + V(bare)', en: 'They study English every day.', vi: 'Họ học tiếng Anh mỗi ngày.' },
+                neg: { formula: "Công thức: S + don't + V(bare)", en: "They don't study English on Sundays.", vi: 'Họ không học tiếng Anh vào Chủ nhật.' },
+                que: { formula: 'Công thức: Do + S + V(bare)?', en: 'Do they study English every day?', vi: 'Họ có học tiếng Anh mỗi ngày không?' }
+            },
+            'My sister': {
+                pos: { formula: 'Công thức: S(số ít) + V(s/es) [study → studies]', en: 'My sister studies English every day.', vi: 'Chị gái tôi học tiếng Anh mỗi ngày.' },
+                neg: { formula: "Công thức: S(số ít) + doesn't + V(bare)", en: "My sister doesn't study English on Sundays.", vi: 'Chị gái tôi không học tiếng Anh vào Chủ nhật.' },
+                que: { formula: 'Công thức: Does + S(số ít) + V(bare)?', en: 'Does my sister study English every day?', vi: 'Chị gái tôi có học tiếng Anh mỗi ngày không?' }
+            }
+        };
+
+        function setBuilderSubject(s) {
+            builderSubj = s;
+            renderSentenceBuilder();
+        }
+
+        function setBuilderForm(f) {
+            builderForm = f;
+            renderSentenceBuilder();
+        }
+
+        function renderSentenceBuilder() {
+            ['I', 'He', 'They', 'My sister'].forEach(s => {
+                const btn = document.getElementById(`sb-subj-${s}`);
+                btn.className = s === builderSubj
+                    ? 'py-2.5 px-3 rounded-xl font-mono font-bold text-sm bg-compass-600 text-white border border-compass-500 shadow-xs cursor-pointer transition-all'
+                    : 'py-2.5 px-3 rounded-xl font-mono font-bold text-sm bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 cursor-pointer transition-all';
+            });
+
+            ['pos', 'neg', 'que'].forEach(f => {
+                const btn = document.getElementById(`sb-form-${f}`);
+                btn.className = f === builderForm
+                    ? 'py-2.5 px-3 rounded-xl font-bold text-sm bg-emerald-500 text-slate-950 border border-emerald-400 shadow-xs cursor-pointer transition-all'
+                    : 'py-2.5 px-3 rounded-xl font-bold text-sm bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 cursor-pointer transition-all';
+            });
+
+            const item = BUILDER_MAP[builderSubj][builderForm];
+            document.getElementById('sb-formula-tag').textContent = item.formula;
+            document.getElementById('sb-sentence-en').textContent = item.en;
+            document.getElementById('sb-sentence-vi').textContent = item.vi;
+        }
+
+        function speakBuilderSentence() {
+            speakText(document.getElementById('sb-sentence-en').textContent);
+        }
+
+        /**
+         * 3. INTERACTIVE VERB TRANSFORMER (SECTION III)
+         */
+        function conjugateThirdPerson(rawWord) {
+            const w = rawWord.trim().toLowerCase();
+            if (!w || !/^[a-z]+$/.test(w)) {
+                return { base: rawWord || '...', result: '...', explain: 'Hãy nhập một động từ tiếng Anh hợp lệ (chỉ gồm chữ cái).' };
+            }
+            if (w === 'have') {
+                return { base: 'have', result: 'has', explain: 'Trường hợp bất quy tắc đặc biệt: have → has.' };
+            }
+            if (w === 'be') {
+                return { base: 'be', result: 'is', explain: 'Động từ To Be chia ở ngôi thứ 3 số ít là "is".' };
+            }
+            if (/(o|s|x|z|ch|sh)$/.test(w)) {
+                return { base: w, result: w + 'es', explain: `Tận cùng thuộc nhóm (-o, -s, -x, -z, -ch, -sh) → thêm "-es".` };
+            }
+            if (/[^aeiou]y$/.test(w)) {
+                return { base: w, result: w.slice(0, -1) + 'ies', explain: `Tận cùng là phụ âm "${w.slice(-2, -1)}" + "y" → đổi y thành i + es.` };
+            }
+            if (/[aeiou]y$/.test(w)) {
+                return { base: w, result: w + 's', explain: `Tận cùng là nguyên âm "${w.slice(-2, -1)}" + "y" → giữ nguyên y và thêm "-s".` };
+            }
+            return { base: w, result: w + 's', explain: 'Động từ thông thường → thêm trực tiếp "-s" vào cuối.' };
+        }
+
+        function transformVerb(word) {
+            const input = document.getElementById('verb-custom-input');
+            if (input.value !== word) input.value = word;
+            const info = conjugateThirdPerson(word);
+            document.getElementById('vt-base').textContent = info.base;
+            document.getElementById('vt-result').textContent = info.result;
+            document.getElementById('vt-explain').textContent = info.explain;
+        }
+
+        function speakVerbTransformer() {
+            const base = document.getElementById('vt-base').textContent;
+            const res = document.getElementById('vt-result').textContent;
+            if (res && res !== '...') speakText(`${base}, ${res}`);
+        }
+
+        /**
+         * 4. INTERACTIVE PRACTICE ZONE (10 QUESTIONS: 5 FILL + 5 MCQ)
+         */
+        const PART_A_QUESTIONS = [
+            {
+                id: 'a1',
+                before: '1. My father usually',
+                verb: 'drink',
+                after: 'a cup of green tea after breakfast.',
+                answers: ['drinks'],
+                explain: 'Chủ ngữ "My father" (ngôi thứ 3 số ít) + trạng từ "usually" → động từ thêm -s: drinks.'
+            },
+            {
+                id: 'a2',
+                before: '2. The flights to Hanoi',
+                verb: 'depart',
+                after: 'at 8:00 AM every day.',
+                answers: ['depart'],
+                explain: 'Chủ ngữ số nhiều "The flights" + lịch trình cố định → giữ nguyên động từ: depart.'
+            },
+            {
+                id: 'a3',
+                before: '3. Lan',
+                verb: 'not / watch',
+                after: 'TV on weekday evenings.',
+                answers: ["doesn't watch", "does not watch"],
+                explain: 'Câu phủ định với chủ ngữ số ít "Lan" → mượn trợ động từ doesn\'t + V(nguyên mẫu): doesn\'t watch.'
+            },
+            {
+                id: 'a4',
+                before: '4. He always',
+                verb: 'study',
+                after: 'hard before every English exam.',
+                answers: ['studies'],
+                explain: '"study" tận cùng là phụ âm "d" + "y" → đổi y thành i + es: studies.'
+            },
+            {
+                id: 'a5',
+                before: '5. Our school library',
+                verb: 'have',
+                after: 'over five thousand English books.',
+                answers: ['has'],
+                explain: 'Chủ ngữ số ít "Our school library" + động từ đặc biệt "have" → đổi thành: has.'
+            }
+        ];
+
+        const PART_B_QUESTIONS = [
+            {
+                id: 'b1',
+                question: '6. ______ your sister work at a bank in District 1?',
+                options: ['Do', 'Does', 'Is', 'Are'],
+                correct: 1,
+                explain: 'Động từ chính trong câu là động từ thường "work", chủ ngữ số ít "your sister" → dùng trợ động từ Does.'
+            },
+            {
+                id: 'b2',
+                question: '7. They ______ often late for morning meetings.',
+                options: ["don't", "doesn't", "aren't", "isn't"],
+                correct: 2,
+                explain: 'Sau chỗ trống là tính từ "late" (không phải động từ thường) và chủ ngữ là "They" → dùng To Be phủ định "aren\'t".'
+            },
+            {
+                id: 'b3',
+                question: '8. The Earth ______ around the Sun once every 365 days.',
+                options: ['revolve', 'revolves', 'revolving', 'is revolve'],
+                correct: 1,
+                explain: 'Chân lý khoa học + chủ ngữ số ít "The Earth" → chia hiện tại đơn thêm -s: revolves.'
+            },
+            {
+                id: 'b4',
+                question: '9. Minh ______ football with his classmates twice a week.',
+                options: ['play', 'plaies', 'plays', 'is play'],
+                correct: 2,
+                explain: '"play" tận cùng là nguyên âm "a" + "y" → giữ nguyên y và thêm -s: plays.'
+            },
+            {
+                id: 'b5',
+                question: '10. Chọn câu có vị trí trạng từ tần suất ĐÚNG nhất:',
+                options: [
+                    'She goes always to the gym on Fridays.',
+                    'She always goes to the gym on Fridays.',
+                    'Always she is happy at work.',
+                    'She is late never for class.'
+                ],
+                correct: 1,
+                explain: 'Trạng từ chỉ tần suất "always" đứng TRƯỚC động từ thường "goes" → "She always goes...".'
+            }
+        ];
+
+        const userMcqSelections = {};
+
+        function renderExercises() {
+            // Render Part A
+            document.getElementById('part-a-container').innerHTML = PART_A_QUESTIONS.map(q => `
+                <div id="card-${q.id}" class="p-4 sm:p-5 rounded-2xl bg-slate-50 border border-slate-200 transition-all">
+                    <div class="text-base sm:text-lg font-semibold text-slate-900 leading-loose">
+                        <span>${q.before}</span>
+                        <input type="text" id="input-${q.id}" placeholder="(${q.verb})" autocomplete="off"
+                            class="mx-1.5 px-3 py-1 rounded-xl border-2 border-indigo-200 focus:border-compass-600 focus:outline-none bg-white font-mono font-bold text-compass-700 w-44 sm:w-52 text-center">
+                        <span>${q.after}</span>
+                    </div>
+                    <div id="fb-${q.id}" class="hidden mt-3 p-3.5 rounded-xl text-sm sm:text-base font-medium"></div>
+                </div>
+            `).join('');
+
+            // Render Part B
+            const letters = ['A', 'B', 'C', 'D'];
+            document.getElementById('part-b-container').innerHTML = PART_B_QUESTIONS.map(q => `
+                <div id="card-${q.id}" class="p-4 sm:p-5 rounded-2xl bg-slate-50 border border-slate-200 transition-all">
+                    <p class="text-base sm:text-lg font-bold text-slate-900 mb-3.5">${q.question}</p>
+                    <div class="grid sm:grid-cols-2 gap-2.5">
+                        ${q.options.map((opt, idx) => `
+                            <button type="button" id="opt-${q.id}-${idx}" onclick="selectMcqOption('${q.id}', ${idx})"
+                                class="text-left px-4 py-3 rounded-xl bg-white hover:bg-indigo-50 border-2 border-slate-200 font-semibold text-sm sm:text-base text-slate-800 flex items-center gap-3 transition-all cursor-pointer">
+                                <span class="w-7 h-7 rounded-lg bg-slate-100 font-mono font-extrabold text-xs sm:text-sm flex items-center justify-center text-slate-700 shrink-0">${letters[idx]}</span>
+                                <span>${opt}</span>
+                            </button>
+                        `).join('')}
+                    </div>
+                    <div id="fb-${q.id}" class="hidden mt-3 p-3.5 rounded-xl text-sm sm:text-base font-medium"></div>
+                </div>
+            `).join('');
+        }
+
+        function selectMcqOption(qId, optIdx) {
+            userMcqSelections[qId] = optIdx;
+            const q = PART_B_QUESTIONS.find(item => item.id === qId);
+            q.options.forEach((_, idx) => {
+                const btn = document.getElementById(`opt-${qId}-${idx}`);
+                if (idx === optIdx) {
+                    btn.className = 'text-left px-4 py-3 rounded-xl bg-indigo-50 border-2 border-compass-600 font-bold text-sm sm:text-base text-compass-900 flex items-center gap-3 transition-all cursor-pointer';
+                } else {
+                    btn.className = 'text-left px-4 py-3 rounded-xl bg-white hover:bg-indigo-50 border-2 border-slate-200 font-semibold text-sm sm:text-base text-slate-800 flex items-center gap-3 transition-all cursor-pointer';
+                }
+            });
+        }
+
+        function normalizeAnswer(str) {
+            return str.trim().toLowerCase().replace(/\s+/g, ' ').replace(/’/g, "'");
+        }
+
+        function gradeAllExercises() {
+            let score = 0;
+
+            // Grade Part A
+            PART_A_QUESTIONS.forEach(q => {
+                const inputEl = document.getElementById(`input-${q.id}`);
+                const cardEl = document.getElementById(`card-${q.id}`);
+                const fbEl = document.getElementById(`fb-${q.id}`);
+                const userVal = normalizeAnswer(inputEl.value);
+                const isRight = q.answers.includes(userVal);
+
+                fbEl.classList.remove('hidden');
+                if (isRight) {
+                    score++;
+                    cardEl.className = 'p-4 sm:p-5 rounded-2xl bg-emerald-50/70 border-2 border-emerald-400 transition-all';
+                    fbEl.className = 'mt-3 p-3.5 rounded-xl bg-emerald-100/80 text-emerald-950 text-sm sm:text-base font-medium';
+                    fbEl.innerHTML = `<strong class="text-emerald-800">✓ Chính xác!</strong> ${q.explain}`;
+                } else {
+                    cardEl.className = 'p-4 sm:p-5 rounded-2xl bg-rose-50/70 border-2 border-rose-400 transition-all';
+                    fbEl.className = 'mt-3 p-3.5 rounded-xl bg-rose-100/80 text-rose-950 text-sm sm:text-base font-medium';
+                    fbEl.innerHTML = `<strong class="text-rose-800">✗ Đáp án đúng: <span class="font-mono underline">${q.answers[0]}</span>.</strong> ${q.explain}`;
+                }
+            });
+
+            // Grade Part B
+            PART_B_QUESTIONS.forEach(q => {
+                const cardEl = document.getElementById(`card-${q.id}`);
+                const fbEl = document.getElementById(`fb-${q.id}`);
+                const chosen = userMcqSelections[q.id];
+                const isRight = chosen === q.correct;
+
+                q.options.forEach((_, idx) => {
+                    const btn = document.getElementById(`opt-${q.id}-${idx}`);
+                    if (idx === q.correct) {
+                        btn.className = 'text-left px-4 py-3 rounded-xl bg-emerald-500 border-2 border-emerald-600 font-extrabold text-sm sm:text-base text-slate-950 flex items-center gap-3';
+                    } else if (idx === chosen && !isRight) {
+                        btn.className = 'text-left px-4 py-3 rounded-xl bg-rose-100 border-2 border-rose-500 font-bold text-sm sm:text-base text-rose-900 flex items-center gap-3';
+                    }
+                });
+
+                fbEl.classList.remove('hidden');
+                if (isRight) {
+                    score++;
+                    cardEl.className = 'p-4 sm:p-5 rounded-2xl bg-emerald-50/70 border-2 border-emerald-400 transition-all';
+                    fbEl.className = 'mt-3 p-3.5 rounded-xl bg-emerald-100/80 text-emerald-950 text-sm sm:text-base font-medium';
+                    fbEl.innerHTML = `<strong class="text-emerald-800">✓ Tuyệt vời!</strong> ${q.explain}`;
+                } else {
+                    cardEl.className = 'p-4 sm:p-5 rounded-2xl bg-rose-50/70 border-2 border-rose-400 transition-all';
+                    fbEl.className = 'mt-3 p-3.5 rounded-xl bg-rose-100/80 text-rose-950 text-sm sm:text-base font-medium';
+                    fbEl.innerHTML = `<strong class="text-rose-800">✗ Đáp án đúng là ${q.options[q.correct]}.</strong> ${q.explain}`;
+                }
+            });
+
+            document.getElementById('total-score-display').textContent = score;
+            const summary = document.getElementById('practice-summary-text');
+            if (score >= 8) {
+                summary.innerHTML = `
+                    <h4 class="font-heading text-xl sm:text-2xl font-extrabold text-emerald-400">Xuất sắc! Bạn đạt ${score}/10 điểm!</h4>
+                    <p class="text-sm sm:text-base text-slate-200 mt-1">Bạn đã nắm rất chắc cấu trúc, quy tắc thêm s/es và dấu hiệu thì Hiện tại đơn.</p>
+                `;
+            } else {
+                summary.innerHTML = `
+                    <h4 class="font-heading text-xl sm:text-2xl font-extrabold text-amber-300">Bạn đạt ${score}/10 điểm!</h4>
+                    <p class="text-sm sm:text-base text-slate-200 mt-1">Hãy xem phần giải thích màu xanh/đỏ ở từng câu phía trên và bấm "Làm lại bài tập" để chinh phục 10/10 nhé!</p>
+                `;
+            }
+            showToast(`Đã chấm xong! Điểm của bạn: ${score}/10`);
+        }
+
+        function resetAllExercises() {
+            Object.keys(userMcqSelections).forEach(k => delete userMcqSelections[k]);
+            document.getElementById('total-score-display').textContent = '0';
+            document.getElementById('practice-summary-text').innerHTML = `
+                <h4 class="font-heading text-xl font-extrabold text-white">Sẵn sàng kiểm tra kết quả?</h4>
+                <p class="text-sm sm:text-base text-slate-300 mt-1">Bấm nút chấm điểm để xem đáp án đúng và giải thích từng câu.</p>
+            `;
+            renderExercises();
+            showToast('Đã làm mới toàn bộ 10 câu bài tập!');
+        }
+
+        // Boot Lesson Page
+        window.addEventListener('DOMContentLoaded', () => {
+            renderSentenceBuilder();
+            transformVerb('study');
+            renderExercises();
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>
